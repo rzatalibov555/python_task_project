@@ -20,3 +20,7 @@ class AuthorProfile(Author, SocialMedia):
     address = models.TextField(blank=True, null=True)
 
 
+class UserProfileTest(Author, SocialMedia):
+    bio = models.TextField(blank=True, null=True)
+
+
