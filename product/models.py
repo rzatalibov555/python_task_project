@@ -29,6 +29,7 @@ class Product(models.Model):
     price = models.FloatField()
     tax_price   = models.FloatField(null=True)
     discount_price = models.FloatField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
     tags = models.ManyToManyField(Tag, blank=True)
