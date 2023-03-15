@@ -35,3 +35,17 @@ class Product(models.Model):
     def __str__(self):
         return self.name
     
+
+
+
+def upload_image_to_products(instance, filename):
+    return f"product/{instance.product.name}/{filename}"
+
+
+class ProductImage(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to=upload_image_to_products)
+
+
+    def __str__(self):
+        return self.product.name

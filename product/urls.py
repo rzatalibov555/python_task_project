@@ -1,8 +1,7 @@
-# from django.urls import path
-# from product.views import index_page,kvadrat
+from django.urls import path
+from . import views
 
 
 urlpatterns = [
-    # path('',index_page),
-    # path('kvadrat',kvadrat)
+   path( "list/", views.product_list_view, name="list"),
 ]
