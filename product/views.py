@@ -1,3 +1,4 @@
+
 from django.shortcuts import render, get_object_or_404
 from .models import Product
 
@@ -6,7 +7,17 @@ from django.db.models.functions import Coalesce
 # Create your views here.
 
 
+
+# region important
+# todo: EDILMELI OLAN TOTDO LIST
+# todo: region important ve endregin lazim olar regionlari acib baglamaq ucundur.
+
+# endregion
+
 def product_list_view(request):
+
+    # print(request.method)
+
     context = {
 
         "products" : Product.objects.all(),
@@ -34,4 +45,17 @@ def product_detail_view(request, id):
     context = {
         "product" : product
     }
-    return render(request, "product/detail.html",context)
+    return render(request, "product/detail.html" ,context)
+
+
+
+
+def product_create_view(request):
+    context = {}
+
+
+
+    if request.method == "POST":
+        print(request.POST)
+
+    return render(request, "product/create.html", context)
