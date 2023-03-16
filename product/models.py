@@ -27,7 +27,8 @@ class Product(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     price = models.FloatField()
-    discount = models.FloatField(blank=True, null=True)
+    tax_price   = models.FloatField(null=True)
+    discount_price = models.FloatField(blank=True, null=True)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
     tags = models.ManyToManyField(Tag, blank=True)
@@ -35,7 +36,10 @@ class Product(models.Model):
     def __str__(self):
         return self.name
     
-
+    # get total price
+    @property
+    def total_price(self):
+        return self.price + (self.tax_price or 0) - (self.discount_price or 0)
 
 
 def upload_image_to_products(instance, filename):
