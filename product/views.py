@@ -59,3 +59,8 @@ def product_create_view(request):
         print(request.POST)
 
     return render(request, "product/create.html", context)
+
+
+
+
+
