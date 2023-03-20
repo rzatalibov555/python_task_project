@@ -67,6 +67,6 @@ class ProductForm(forms.ModelForm):
             return Product.objects.create(
                 **self.cleaned_data
             )
-        # else:
-            # return Product(**self,cleaned_data)
-#TODO:: neyese gore formdaki 71-ci setrdeki else iwlemedi (def save())
+        else:
+            return Product(**self.cleaned_data)
+

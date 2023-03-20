@@ -7,7 +7,13 @@
 
     <div class="container">
         <div class="row">
-            <h1>Products</h1>
+            <h1 class="text-center">Products
+                <a href="{% url "product:create" %}">
+                    <button type="button" class="btn btn-success pull-right">Create</button>
+                </a>
+            </h1>
+            
+
             {% for product in products %}
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 mt-3">
                     <div class="row">
