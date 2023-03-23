@@ -8,10 +8,56 @@
     </style>
 {% endblock %}
 
+
+
+
+
+
 {% block content %}
 
     <div class="container">
         <h1>Create Form</h1>
+{#    errorlarin cixmasi#}
+{#    {% if form.errors %}#}
+{#        {{ form.errors }}#}
+{#    {% endif %}#}
+
+    {% if form.errors %}
+        <div class="error-message mb-4">
+            {% for field in form %}
+                {% for error in field.errors %}
+
+                    <div class="alert alert-danger" role="alert">
+                        {{ error|escape }}
+                    </div>
+
+                {% endfor %}
+            {% endfor %}
+
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error|escape }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+{#    {% if form.errors %}#}
+{#        <div class="alert alert-danger alert-dismissible" role="alert">#}
+{#            <div id="form_errors">#}
+{#                {% for key, value in form.errors.items %}#}
+{#                    <strong>{{ value }}</strong>#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#            <button type="button" class="close" data-dismiss="alert" aria-label="Close">#}
+{#                <span aria-hidden="true">&times;</span>#}
+{#            </button>#}
+{#        </div>#}
+{#    {% endif %}#}
+
+
+{#    errorlarin cixmasi#}
+
         <form method="POST">
             {% csrf_token %}
 {#=============================================================#}

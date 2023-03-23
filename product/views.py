@@ -66,8 +66,14 @@ def product_create_view(request):
         # print(name)
 
         if form.is_valid():
-            form.save()
+            # form.save()
+            product = form.save(commit=True)
+            print(product)
+            # product.price = 10
+            # product.save()
             return redirect("product:list")
+        else:
+            print(form.errors)
 
     context["form"] = form
     return render(request, "product/create.html", context)
